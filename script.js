@@ -11,7 +11,7 @@
         C2: '_',
         C3: '_',
         }
-        const winningConditions = [
+        const _winningConditions = [
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
@@ -21,12 +21,17 @@
             [0, 4, 8],
             [2, 4, 6]
         ]
-        const init = function() {
+        const _init = function() {
             console.log("Lets play tic-tac-toe!")
             _render()
         }
         const playTurn = function(pos, player) {
-            gameboard[pos] = player
+            if (gameboard[pos] == '_') {
+                gameboard[pos] = player
+            } else {
+                console.log("You can't put that there!")
+                return
+            }
             _render()
             resultValidation()
         }
@@ -39,7 +44,7 @@
         }
         const resultValidation = function() {
             let boardVals = Object.values(gameboard)
-            for (win of winningConditions) {
+            for (win of _winningConditions) {
                 let a = win[0]
                 let b = win[1]
                 let c = win[2]
@@ -54,8 +59,8 @@
             }
         }
 
-        init()
+        _init()
 
-        return {playTurn, resultValidation, gameboard, }
+        return {playTurn, resultValidation, gameboard}
     })()
 // })()
