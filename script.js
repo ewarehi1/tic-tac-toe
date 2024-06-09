@@ -44,7 +44,7 @@
         }
         const resultValidation = function() {
             let boardVals = Object.values(gameboard)
-            for (win of _winningConditions) {
+            for (const win of _winningConditions) {
                 let a = win[0]
                 let b = win[1]
                 let c = win[2]
@@ -58,9 +58,15 @@
                 }
             }
         }
+        const reset = function() {
+            for (let key in gameboard) {
+                gameboard[key] = '_'
+            }
+            _init()
+        }
 
         _init()
 
-        return {playTurn, resultValidation, gameboard}
+        return {playTurn, resultValidation, gameboard, reset}
     })()
 // })()
