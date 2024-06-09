@@ -1,6 +1,6 @@
 // (function(){
-    var Gameboard = {
-        gameboard: {
+    var Game = (() => {
+        const gameboard = {
         A1: '_',
         A2: '_',
         A3: '_',
@@ -10,8 +10,8 @@
         C1: '_',
         C2: '_',
         C3: '_',
-        },
-        winningConditions: [
+        }
+        const winningConditions = [
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
@@ -20,26 +20,26 @@
             [2, 5, 8],
             [0, 4, 8],
             [2, 4, 6]
-        ],
-        init: function() {
+        ]
+        const init = function() {
             console.log("Lets play tic-tac-toe!")
-            this.render()
-        },
-        playTurn: function(pos, player) {
-            this.gameboard[pos] = player
-            this.render()
-            this.resultValidation()
-        },
-        render: function() {
-            var n = this.gameboard
+            _render()
+        }
+        const playTurn = function(pos, player) {
+            gameboard[pos] = player
+            _render()
+            resultValidation()
+        }
+        const _render = function() {
+            var n = gameboard
             console.log(
                 n.A1, n.A2, n.A3 +'\n'+
                 n.B1, n.B2, n.B3 +'\n'+ 
                 n.C1, n.C2, n.C3)
-        },
-        resultValidation: function() {
-            let boardVals = Object.values(this.gameboard)
-            for (win of this.winningConditions) {
+        }
+        const resultValidation = function() {
+            let boardVals = Object.values(gameboard)
+            for (win of winningConditions) {
                 let a = win[0]
                 let b = win[1]
                 let c = win[2]
@@ -52,9 +52,10 @@
                     break
                 }
             }
-        },
-        
-    }
+        }
 
-    Gameboard.init()
+        init()
+
+        return {playTurn, resultValidation, gameboard, }
+    })()
 // })()
