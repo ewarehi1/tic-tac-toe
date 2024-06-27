@@ -1,15 +1,10 @@
-(function(){
-    let Gameboard = [
-        A1: ,
-        A2: ,
-        A3: ,
-        B1: ,
-        B2: ,
-        B3: ,
-        C1: ,
-        C2: ,
-        C3: ,
-    ]
-
-    
-})()
+body {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+#board {
+    display: grid;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-columns: 50px 50px 50px;
+}

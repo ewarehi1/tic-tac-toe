@@ -1,5 +1,5 @@
 // (function(){
-    var Game = (() => {
+    const Game = (() => {
         const gameboard = {
         A1: '_',
         A2: '_',
@@ -68,5 +68,24 @@
         _init()
 
         return {playTurn, resultValidation, gameboard, reset}
+    })()
+
+    const Display = (() => {
+        const _init = function() {
+            render()
+        }
+        const render = function () {
+            const board = document.querySelector('#board')
+            for (let i = 0; i < 9; i++) {
+                gameProp = Object.keys(Game.gameboard)[i]
+
+                btn = document.createElement('button')
+                btn.setAttribute('id', `${gameProp}`)
+                btn.innerText = `${Game.gameboard[`${gameProp}`]}`
+                board.appendChild(btn)
+            }
+        }
+
+        _init()
     })()
 // })()
