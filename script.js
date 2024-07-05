@@ -21,11 +21,20 @@
             [0, 4, 8],
             [2, 4, 6]
         ]
+        let turnCounter = 0
         const _init = function() {
             console.log("Lets play tic-tac-toe!")
             _render()
         }
-        const playTurn = function(pos, player) {
+        const playTurn = function(pos) {
+            let player
+            if (turnCounter % 2 == 0) {
+                player = 'X'
+                turnCounter++
+            } else {
+                player = 'O'
+                turnCounter++
+            }
             if (gameboard[pos] == '_') {
                 gameboard[pos] = player
             } else {
@@ -77,11 +86,12 @@
         const render = function () {
             const board = document.querySelector('#board')
             for (let i = 0; i < 9; i++) {
-                gameProp = Object.keys(Game.gameboard)[i]
+                position = Object.keys(Game.gameboard)[i]
 
                 btn = document.createElement('button')
-                btn.setAttribute('id', `${gameProp}`)
-                btn.innerText = `${Game.gameboard[`${gameProp}`]}`
+                btn.setAttribute('id', `${position}`)
+                btn.setAttribute('class', 'squares')
+                btn.innerText = `${Game.gameboard[`${position}`]}`
                 board.appendChild(btn)
             }
         }
