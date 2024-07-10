@@ -21,9 +21,11 @@
             [0, 4, 8],
             [2, 4, 6]
         ]
+        const msg = document.querySelector('#msg')
         let turnCounter = 0
         const _init = function() {
             console.log("Lets play tic-tac-toe!")
+            msg.innerText = "Lets play tic-tac-toe!"
             _render()
         }
         const playTurn = function(pos) {
@@ -38,6 +40,7 @@
                 turnCounter++
             } else {
                 console.log("You can't put that there!")
+                msg.innerText = "You can't put that there!"
                 return
             }
             _render()
@@ -62,6 +65,7 @@
 
                 if (condition1 && condition2) {
                     console.log(`${boardVals[a]} is the winner`)
+                    msg.innerText = `${boardVals[a]} is the winner`
                     break
                 }
             }
