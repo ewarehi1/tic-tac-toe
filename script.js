@@ -1,15 +1,15 @@
 (function(){
     const Game = (() => {
         const gameboard = {
-        A1: '_',
-        A2: '_',
-        A3: '_',
-        B1: '_',
-        B2: '_',
-        B3: '_',
-        C1: '_',
-        C2: '_',
-        C3: '_',
+        A1: '',
+        A2: '',
+        A3: '',
+        B1: '',
+        B2: '',
+        B3: '',
+        C1: '',
+        C2: '',
+        C3: '',
         }
         const _winningConditions = [
             [0, 1, 2],
@@ -35,7 +35,7 @@
             } else {
                 player = 'O'
             }
-            if (gameboard[pos] == '_') {
+            if (gameboard[pos] == '') {
                 gameboard[pos] = player
                 msg.innerText = ""
                 turnCounter++
@@ -73,7 +73,7 @@
         }
         const reset = function() {
             for (let key in gameboard) {
-                gameboard[key] = '_'
+                gameboard[key] = ''
             }
             _init()
         }
@@ -91,7 +91,6 @@
             createResetBtn()
         }
         const render = function() {
-
             for (let i = 0; i < 9; i++) {
                 const position = Object.keys(Game.gameboard)[i]
 
