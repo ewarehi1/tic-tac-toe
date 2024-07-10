@@ -1,4 +1,4 @@
-// (function(){
+(function(){
     const Game = (() => {
         const gameboard = {
         A1: '_',
@@ -66,7 +66,7 @@
 
                 if (condition1 && condition2) {
                     console.log(`${boardVals[a]} is the winner`)
-                    msg.innerText = `${boardVals[a]} is the winner`
+                    msg.innerText = `${boardVals[a]} is the winner!`
                     break
                 }
             }
@@ -84,11 +84,14 @@
     })()
 
     const Display = (() => {
+        const board = document.querySelector('#board')
+        const body = document.querySelector('body')
         const _init = function() {
             render()
+            createResetBtn()
         }
-        const render = function () {
-            const board = document.querySelector('#board')
+        const render = function() {
+
             for (let i = 0; i < 9; i++) {
                 const position = Object.keys(Game.gameboard)[i]
 
@@ -103,10 +106,24 @@
                 })
 
                 board.appendChild(btn)
-            }
-
+            }  
+        }
+        const createResetBtn = function() {
+            const resetBtn = document.createElement('a')
+            resetBtn.innerText = "reset"
+            resetBtn.setAttribute('id', 'resetBtn')
+            resetBtn.addEventListener('click', () => {
+                Game.reset()
+                while (board.firstChild) {
+                    board.removeChild(board.firstChild);
+                }
+                render()
+            })
+            body.appendChild(resetBtn)
         }
 
         _init()
+
+        return {render}
     })()
-// })()
+})()
