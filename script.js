@@ -86,14 +86,22 @@
         const render = function () {
             const board = document.querySelector('#board')
             for (let i = 0; i < 9; i++) {
-                position = Object.keys(Game.gameboard)[i]
+                const position = Object.keys(Game.gameboard)[i]
 
-                btn = document.createElement('button')
+                const btn = document.createElement('button')
                 btn.setAttribute('id', `${position}`)
                 btn.setAttribute('class', 'squares')
                 btn.innerText = `${Game.gameboard[`${position}`]}`
+                
+
+                btn.addEventListener('click', () => {
+                    Game.playTurn(position)
+                    document.querySelector(`#${position}`).innerText = `${Game.gameboard[`${position}`]}`
+                })
+
                 board.appendChild(btn)
             }
+
         }
 
         _init()
