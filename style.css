@@ -8,6 +8,9 @@ body {
     grid-template-rows: 50px 50px 50px;
     grid-template-columns: 50px 50px 50px;
 }
+#msg {
+    height: 1em
+}
 #resetBtn {
     color: #0000EE;
     text-decoration: underline;

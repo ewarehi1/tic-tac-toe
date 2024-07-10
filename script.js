@@ -123,7 +123,5 @@
         }
 
         _init()
-
-        return {render}
     })()
 })()
