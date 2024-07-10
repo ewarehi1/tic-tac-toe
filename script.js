@@ -30,13 +30,12 @@
             let player
             if (turnCounter % 2 == 0) {
                 player = 'X'
-                turnCounter++
             } else {
                 player = 'O'
-                turnCounter++
             }
             if (gameboard[pos] == '_') {
                 gameboard[pos] = player
+                turnCounter++
             } else {
                 console.log("You can't put that there!")
                 return
@@ -93,7 +92,6 @@
                 btn.setAttribute('class', 'squares')
                 btn.innerText = `${Game.gameboard[`${position}`]}`
                 
-
                 btn.addEventListener('click', () => {
                     Game.playTurn(position)
                     document.querySelector(`#${position}`).innerText = `${Game.gameboard[`${position}`]}`
