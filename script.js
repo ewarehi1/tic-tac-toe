@@ -37,6 +37,7 @@
             }
             if (gameboard[pos] == '_') {
                 gameboard[pos] = player
+                msg.innerText = ""
                 turnCounter++
             } else {
                 console.log("You can't put that there!")
