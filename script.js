@@ -75,6 +75,7 @@
             for (let key in gameboard) {
                 gameboard[key] = ''
             }
+            turnCounter = 0
             _init()
         }
 
@@ -107,20 +108,23 @@
                 board.appendChild(btn)
             }  
         }
+        const rerender = function() {
+            Game.reset()
+            while (board.firstChild) {
+                board.removeChild(board.firstChild);
+            }
+            render()
+        }
         const createResetBtn = function() {
             const resetBtn = document.createElement('a')
             resetBtn.innerText = "reset"
             resetBtn.setAttribute('id', 'resetBtn')
-            resetBtn.addEventListener('click', () => {
-                Game.reset()
-                while (board.firstChild) {
-                    board.removeChild(board.firstChild);
-                }
-                render()
-            })
+            resetBtn.addEventListener('click', rerender)
             body.appendChild(resetBtn)
         }
 
         _init()
+
+        return {rerender}
     })()
 })()
